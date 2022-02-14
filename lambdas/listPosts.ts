@@ -40,4 +40,4 @@ const handler = async (event: APIGatewayProxyEvent, context: Context) => {
   return result;
 }
 
-export default handler;
+export { handler };

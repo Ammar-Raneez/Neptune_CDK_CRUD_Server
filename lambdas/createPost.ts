@@ -42,4 +42,4 @@ async function handler(event: APIGatewayProxyEvent, context: Context) {
   return result;
 }
 
-export default handler;
+export { handler };

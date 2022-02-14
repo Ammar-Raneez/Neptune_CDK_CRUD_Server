@@ -22,18 +22,20 @@ async function handler(event: APIGatewayProxyEvent, context: Context) {
 
   try {
     const properties = await g.V(postId).properties().toList();
+    driverConnector.close();
     const post = properties.reduce((acc: any, next: any) => {
       acc[next.label] = next.value;
       return acc;
     }, {});
 
-    post.id = postId;
-    return post;
+    result.body = JSON.stringify(post);
   } catch (err) {
     console.log('ERROR', err);
     result.body = (err as any).message;
   }
+
+  return result;
 }
 
 
-export default handler;
+export { handler };
